@@ -12,7 +12,7 @@
       <div id="sub-description">This is an estimated amount and not the actual, actual price may slightly vary.</div>
       <div id="table">
         <div id="table-description">Monthly Consumption Expenses of Essential Commodities (For a family of 4-5 members)</div>
-        <b-table table-bordered striped hover :items="tableItems"></b-table>
+        <b-table bordered hover :items="tableItems"></b-table>
       </div>
     </div>
   </div>
@@ -21,45 +21,45 @@
 <script>
 // Canonical data - modify this to make changes to the webpage.
 const _items = [
-    // Item, Quantity, Unit of Measurement, Price Per Unit
-    ["Rice", 12, "KG", 65],
-    ["Ragi", 5, "KG", 25],
-    ["Wheat Flour", 5, "KG", 50],
-    ["Oil", 5, "Liter", 100],
-    ["Sugar", 3, "KG", 55],
-    ["Salt", 1, "KG", 18],
-    ["Onion", 4, "KG", 40],
-    ["Potatoes", 4, "KG", 30],
-    ["Toor Dal", 2, "KG", 60],
-    ["Urad Dal", 1, "KG", 120],
-];
+  // Item, Quantity, Unit of Measurement, Price Per Unit
+  ['Rice', 12, 'KG', 65],
+  ['Ragi', 5, 'KG', 25],
+  ['Wheat Flour', 5, 'KG', 50],
+  ['Oil', 5, 'Liter', 100],
+  ['Sugar', 3, 'KG', 55],
+  ['Salt', 1, 'KG', 18],
+  ['Onion', 4, 'KG', 40],
+  ['Potatoes', 4, 'KG', 30],
+  ['Toor Dal', 2, 'KG', 60],
+  ['Urad Dal', 1, 'KG', 120]
+]
 
-function _formatINR(number) {
-    const roundedUp = Math.ceil(number / 10) * 10;
-    const formatted = new Intl.NumberFormat(
-        'en-IN', 
-        {
-            style: 'currency', 
-            currency: 'INR'
-        }
-    ).format(roundedUp);
-    return formatted.replace(".00", "");
+function _formatINR (number) {
+  const roundedUp = Math.ceil(number / 10) * 10
+  const formatted = new Intl.NumberFormat(
+    'en-IN',
+    {
+      style: 'currency',
+      currency: 'INR'
+    }
+  ).format(roundedUp)
+  return formatted.replace('.00', '')
 }
 
-function calcuatePackageCost(numFamilies) {
-    var cost = 0;
-    _items.forEach(item => {
-        cost += (item[1] * item[3]);
-    });
-    cost += (cost * 0.05); // Add 5% transportation cost
-    const totalCost = cost * numFamilies;
-    return _formatINR(totalCost);
+function calcuatePackageCost (numFamilies) {
+  var cost = 0
+  _items.forEach(item => {
+    cost += (item[1] * item[3])
+  })
+  cost += (cost * 0.05) // Add 5% transportation cost
+  const totalCost = cost * numFamilies
+  return _formatINR(totalCost)
 }
 
-function getTableData() {
-    const ret = JSON.parse(JSON.stringify(_items)); // Deep copy
-    ret.push(["Contingency & travels (5%)", null, null, null]);
-    return ret;
+function getTableData () {
+  const ret = JSON.parse(JSON.stringify(_items)) // Deep copy
+  ret.push(['Contingency & travels (5%)', null, null, null])
+  return ret
 }
 
 export default {
@@ -79,19 +79,17 @@ export default {
         this.numberOfFamilies = '0'
       }
       this.totalAmount = calcuatePackageCost(this.numberOfFamilies)
-      var tableData = getTableData
     },
-    renderTableData() {
+    renderTableData () {
+      var tableRows = getTableData()
       var rows = []
-      var value
-      for (value in getTableData()) {
-        rows.push({Items: value[0], Quantity: value[1], Unit_Of_Measurement: value[2]})
+      for (var i = 0; i < tableRows.length; i++) {
+        rows.push({Items: tableRows[i][0], Quantity: tableRows[i][1], Unit_Of_Measurement: tableRows[i][2]})
       }
       return rows
-      
     }
   },
-  created() {
+  created () {
     this.tableItems = this.renderTableData()
   }
 }

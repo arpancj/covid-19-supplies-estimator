@@ -10,7 +10,7 @@
       <div id="sub-title">Estimated Amount</div>
       <div id="description">Total Amount ( Number of families * Monthly package amount) = <b>{{totalAmount}}</b> for {{numberOfFamilies}} families</div>
       <div id="sub-description">This is an estimated amount and not the actual, actual price may slightly vary.</div>
-      <div id="table">
+      <div id="table" class="table-sm">
         <div id="table-description">Monthly Consumption Expenses of Essential Commodities (For a family of 4-5 members)</div>
         <b-table bordered hover :items="tableItems"></b-table>
       </div>
@@ -97,13 +97,13 @@ export default {
 
 <style>
 #app {
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
-  line-height: 28px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  margin-top: 92px;
-  margin-left: 90px;
+    font-family: Roboto,sans-serif;
+    font-style: normal;
+    line-height: 28px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 92px auto;
+    width: 88%;
 }
 #title {
   font-size: 24px;

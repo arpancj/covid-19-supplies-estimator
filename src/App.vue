@@ -7,8 +7,8 @@
       <button type="button" class="btn btn-primary" v-on:click="showResult()">Submit</button>
     </div>
     <div id="result">
-      <div id="sub-title">Estimatied Amount</div>
-      <div id="description">Total Amount ( Number of families * Monthly pakage amount) = INR {{totalAmount}} for {{numberOfFamilies}} families</div>
+      <div id="sub-title">Estimated Amount</div>
+      <div id="description">Total Amount ( Number of families * Monthly package amount) = INR {{totalAmount}} for {{numberOfFamilies}} families</div>
       <div id="sub-description">This is an estimated amount and not the actual, actual price may slightly vary.</div>
       <div id="table">
         <div id="table-description">Monthly Consumption Expenses of Essential Commodities (For a family of 4-5 members)</div>

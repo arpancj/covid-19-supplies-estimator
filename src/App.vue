@@ -4,11 +4,11 @@
     <div id="entry">
       <div id="description">Number of Families (on an <b>Average</b> a family would consist of <b>5 members</b>)</div>
       <input type="text" v-model="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-      <button type="button" class="btn btn-primary" v-on:click="result(3)">Submit</button>
+      <button type="button" class="btn btn-primary" v-on:click="showResult()">Submit</button>
     </div>
     <div id="result">
       <div id="sub-title">Estimatied Amount</div>
-      <div id="description">Total Amount ( Number of families * Monthly pakage amount) = INR 54000 for 3 families</div>
+      <div id="description">Total Amount ( Number of families * Monthly pakage amount) = INR {{totalAmount}} for {{numberOfFamilies}} families</div>
       <div id="sub-description">This is an estimated amount and not the actual, actual price may slightly vary.</div>
       <div id="table">
         <div id="table-description">Monthly Consumption Expenses of Essential Commodities (For a family of 4-5 members)</div>
@@ -33,7 +33,14 @@
 export default {
   data () {
     return {
-      text: ''
+      text: '',
+      totalAmount: 54000,
+      numberOfFamilies: 0
+    }
+  },
+  methods: {
+    showResult: function () {
+      this.numberOfFamilies = this.text
     }
   }
 }

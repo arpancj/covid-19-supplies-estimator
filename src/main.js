@@ -11,10 +11,5 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   components: { App },
-  template: '<App/>',
-  methods: {
-    result: function (numFamilies) {
-      debugger
-    }
-  }
+  template: '<App/>'
 })

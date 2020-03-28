@@ -3,7 +3,7 @@
     <div id="title">ESTIMATION TOOL</div>
     <div id="entry">
       <div id="description">Number of Families (on an <b>Average</b> a family would consist of <b>5 members</b>)</div>
-      <input type="text" v-model="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+      <input type="number" v-model="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
       <button type="button" class="btn btn-primary" v-on:click="showResult()">Submit</button>
     </div>
     <div id="result">

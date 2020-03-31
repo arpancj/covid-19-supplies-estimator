@@ -57,8 +57,15 @@ function calcuatePackageCost (numFamilies) {
 }
 
 function getTableData () {
-  const ret = JSON.parse(JSON.stringify(_items)) // Deep copy
-  ret.push(['Contingency & travels (5%)', null, null, null])
+  const ret = []
+  _items.forEach(item => {
+    var quantity = item[1] + ' ' + item[2];
+    if (item[1] > 1) {
+      quantity += 's';
+    }
+    ret.push([item[0], quantity])
+  })
+  ret.push(['Contingency & travels (5%)', null])
   return ret
 }
 
@@ -84,7 +91,7 @@ export default {
       var tableRows = getTableData()
       var rows = []
       for (var i = 0; i < tableRows.length; i++) {
-        rows.push({Items: tableRows[i][0], Quantity: tableRows[i][1], Unit_Of_Measurement: tableRows[i][2]})
+        rows.push({Items: tableRows[i][0], Quantity: tableRows[i][1]})
       }
       return rows
     }
